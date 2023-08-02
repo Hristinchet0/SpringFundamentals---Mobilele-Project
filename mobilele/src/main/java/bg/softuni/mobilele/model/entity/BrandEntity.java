@@ -1,5 +1,6 @@
 package bg.softuni.mobilele.model.entity;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 import java.time.LocalDate;
@@ -8,10 +9,13 @@ import java.time.LocalDate;
 @Table(name = "brands")
 public class BrandEntity extends BaseEntity {
 
+    @Column(name = "name")
     private String name;
 
+    @Column(name = "created")
     private LocalDate created;
 
+    @Column(name = "modified")
     private LocalDate modified;
 
     public BrandEntity() {
