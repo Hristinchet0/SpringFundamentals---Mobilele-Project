@@ -7,6 +7,7 @@ import org.hibernate.annotations.Type;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.UUID;
 
 @Entity
@@ -18,6 +19,9 @@ public class OfferEntity{
     @GenericGenerator(name = "UUID", strategy = "org.hibernate.id.UUIDGenerator")
     @Type(type = "uuid-char")
     private UUID id;
+
+    @Column(name = "description", nullable = false, columnDefinition = "TEXT")
+    private String description;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
@@ -120,10 +124,19 @@ public class OfferEntity{
         this.seller = seller;
     }
 
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
     @Override
     public String toString() {
         return "OfferEntity{" +
                 "id=" + id +
+                ", description='" + description + '\'' +
                 ", engine=" + engine +
                 ", imageUrl='" + imageUrl + '\'' +
                 ", mileage=" + mileage +
