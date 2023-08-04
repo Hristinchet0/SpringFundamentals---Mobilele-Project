@@ -37,13 +37,14 @@ public class UserController {
     }
 
     //register
-    @GetMapping("/users/register")
+    @GetMapping("/register")
     public String register() {
         return "auth-register";
     }
 
-    @PostMapping("/users/register")
+    @PostMapping("/register")
     public String register(UserRegisterDto userRegisterDto) {
-        return "redirect:/";
+        userService.registerAndLogin(userRegisterDto);
+    return "redirect:/";
     }
 }
