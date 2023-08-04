@@ -31,4 +31,8 @@ public class CurrentUser {
         loggedIn = false;
         name = null;
     }
+
+    public boolean isAnonymous() {
+        return !loggedIn;
+    }
 }

@@ -44,12 +44,13 @@ public class UserService {
         return success;
     }
 
+
     private void login(UserEntity userEntity) {
         currentUser.setLoggedIn(true);
         currentUser.setName(userEntity.getFirstName() + " " + userEntity.getLastName());
     }
 
-    private void logout() {
+    public void logout() {
         currentUser.clear();
     }
 }
