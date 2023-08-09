@@ -2,16 +2,16 @@ package bg.softuni.mobilele.model.DTO;
 
 public class UserLoginDto {
 
-    private String email;
+    private String username;
 
     private String password;
 
-    public String getEmail() {
-        return email;
+    public String getUsername() {
+        return username;
     }
 
-    public void setEmail(String email) {
-        this.email = email;
+    public void setUsername(String username) {
+        this.username = username;
     }
 
     public String getPassword() {
@@ -25,7 +25,7 @@ public class UserLoginDto {
     @Override
     public String toString() {
         return "UserLoginDto{" +
-                "email='" + email + '\'' +
+                "username='" + username + '\'' +
                 ", password='" + (password != null ? "[PROVIDED]" : null) + '\'' +
                 '}';
     }
