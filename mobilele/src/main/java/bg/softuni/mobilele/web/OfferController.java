@@ -1,6 +1,7 @@
 package bg.softuni.mobilele.web;
 
 import bg.softuni.mobilele.model.DTO.AddOfferDto;
+import bg.softuni.mobilele.service.BrandService;
 import bg.softuni.mobilele.service.OfferService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +17,11 @@ public class OfferController {
 
     private final OfferService offerService;
 
-    public OfferController(OfferService offerService) {
+    private final BrandService brandService;
+
+    public OfferController(OfferService offerService, BrandService brandService) {
         this.offerService = offerService;
+        this.brandService = brandService;
     }
 
     @GetMapping("/offers/all")
@@ -30,6 +34,9 @@ public class OfferController {
         if(!model.containsAttribute("addOfferModel")) {
             model.addAttribute("addOfferModel", new AddOfferDto());
         }
+
+        model.addAttribute("brands", brandService.getAllBrands());
+
         return "offer-add";
     }
 
@@ -46,6 +53,7 @@ public class OfferController {
         }
 
         //todo
+        offerService.addOffer(addOfferModel);
 
 
         return "redirect:/";
