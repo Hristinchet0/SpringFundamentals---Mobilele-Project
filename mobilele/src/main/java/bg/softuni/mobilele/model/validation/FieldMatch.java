@@ -16,7 +16,7 @@ public @interface FieldMatch {
 
     String secondField();
 
-    String message() default "Invalid Email";
+    String message() default "Invalid Field";
 
     Class<?>[] groups() default {};
 
