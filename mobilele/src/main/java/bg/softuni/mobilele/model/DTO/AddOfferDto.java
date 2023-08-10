@@ -6,6 +6,7 @@ import bg.softuni.mobilele.model.enums.TransmissionEnum;
 import javax.validation.constraints.Min;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Positive;
 
 public class AddOfferDto {
 
@@ -16,8 +17,23 @@ public class AddOfferDto {
     @NotNull
     private EngineEnum engine;
 
+    @Positive
+    @NotNull
+    private Integer price;
+
     @NotNull
     private TransmissionEnum transmission;
+
+    @Min(1900)
+    @NotNull
+    private Integer year;
+
+    @Positive
+    @NotNull
+    private Integer mileage;
+
+    @NotEmpty
+    private String description;
 
     @NotEmpty
     private String imageUrl;
@@ -38,12 +54,12 @@ public class AddOfferDto {
         this.engine = engine;
     }
 
-    public String getImageUrl() {
-        return imageUrl;
+    public Integer getPrice() {
+        return price;
     }
 
-    public void setImageUrl(String imageUrl) {
-        this.imageUrl = imageUrl;
+    public void setPrice(Integer price) {
+        this.price = price;
     }
 
     public TransmissionEnum getTransmission() {
@@ -54,5 +70,35 @@ public class AddOfferDto {
         this.transmission = transmission;
     }
 
+    public Integer getYear() {
+        return year;
+    }
 
+    public void setYear(Integer year) {
+        this.year = year;
+    }
+
+    public Integer getMileage() {
+        return mileage;
+    }
+
+    public void setMileage(Integer mileage) {
+        this.mileage = mileage;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 }
