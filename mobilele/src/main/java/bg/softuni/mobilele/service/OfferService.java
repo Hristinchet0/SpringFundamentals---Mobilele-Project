@@ -1,6 +1,7 @@
 package bg.softuni.mobilele.service;
 
 import bg.softuni.mobilele.model.DTO.AddOfferDto;
+import bg.softuni.mobilele.model.DTO.CardListingOfferDTO;
 import bg.softuni.mobilele.model.entity.ModelEntity;
 import bg.softuni.mobilele.model.entity.OfferEntity;
 import bg.softuni.mobilele.model.entity.UserEntity;
@@ -9,6 +10,8 @@ import bg.softuni.mobilele.repository.ModelRepository;
 import bg.softuni.mobilele.repository.OfferRepository;
 import bg.softuni.mobilele.repository.UserRepository;
 import org.springframework.stereotype.Service;
+
+import java.util.List;
 
 @Service
 public class OfferService {
@@ -24,7 +27,6 @@ public class OfferService {
     public OfferService(OfferRepository offerRepository, OfferMapper offerMapper, UserRepository userRepository, ModelRepository modelRepository) {
         this.offerRepository = offerRepository;
         this.offerMapper = offerMapper;
-
         this.userRepository = userRepository;
         this.modelRepository = modelRepository;
     }
@@ -44,5 +46,13 @@ public class OfferService {
         //        newOffer.setSeller(seller);
 
         offerRepository.save(newOffer);
+    }
+
+    public List<CardListingOfferDTO> findOfferByOfferName(String query) {
+        return this.offerRepository
+                .findAllByModel_NameContains(query)
+                .stream()
+                .map(offer -> offerMapper.offerEntityToCardListingOfferDto(offer))
+                .toList();
     }
 }

@@ -4,8 +4,6 @@ import bg.softuni.mobilele.model.DTO.UserRegisterDto;
 import bg.softuni.mobilele.model.entity.UserEntity;
 import bg.softuni.mobilele.model.mapper.UserMapper;
 import bg.softuni.mobilele.repository.UserRepository;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -13,14 +11,12 @@ import org.springframework.stereotype.Service;
 @Service
 public class UserService {
 
-    private Logger LOGGER = LoggerFactory.getLogger(UserService.class);
-
     private final UserRepository userRepository;
 
 
-    private PasswordEncoder passwordEncoder;
+    private final PasswordEncoder passwordEncoder;
 
-    private UserMapper userMapper;
+    private final UserMapper userMapper;
 
     public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, UserMapper userMapper) {
         this.userRepository = userRepository;
@@ -35,8 +31,12 @@ public class UserService {
 
         userRepository.save(newUser);
 
-        //todo: register usert java.util.Optional;
+        login(newUser);
 
+    }
+
+    private void login(UserEntity userEntity) {
+        //todo
     }
 
 }

@@ -19,3 +19,6 @@ VALUES (1, 'Fiesta', 'CAR', 1976, null, 1, 'https://upload.wikimedia.org/wikiped
        (5, 'A6', 'CAR', 2011, 2014, 4, 'https://cdn3.focus.bg/autodata/i/audi/a6/a6-avant-4g-c7/large/e85cf212e16539155f1d11b7202e8813.jpg'),
        (6, 'X5', 'CAR', 2010, 2013, 5, 'https://cdn3.focus.bg/autodata/i/bmw/x5/x5-e70-restyling/large/27022a539b6047a2cb52e1f6364e9039.jpg'),
        (7, '300 EXC', 'MOTORCYCLE', 2024, null, 6, 'https://motohouse.bg/wp-content/uploads/2022/04/ktm_300_exc_2024_motohouse.jpg');
+
+INSERT INTO offers (id, description, engine, image_url, mileage, price, transmission, year, model_id, seller_id)
+VALUES ('5ebdd23e-7bf3-4166-ab67-98242b871f6b', 'Качваш са, караш са, отиваш на фиеста. С Форд Фиеста.', 'GASOLINE', 'https://upload.wikimedia.org/wikipedia/commons/thumb/0/05/2005_Ford_Fiesta_%28WP%29_Ghia_5-door_hatchback_%282015-07-24%29_01.jpg/280px-2005_Ford_Fiesta_%28WP%29_Ghia_5-door_hatchback_%282015-07-24%29_01.jpg', 320000, 2600, 'MANUAL', 2005, 1, 1)
