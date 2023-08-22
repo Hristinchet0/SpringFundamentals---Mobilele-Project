@@ -4,6 +4,11 @@ import bg.softuni.mobilele.model.DTO.UserRegisterDto;
 import bg.softuni.mobilele.model.entity.UserEntity;
 import bg.softuni.mobilele.model.mapper.UserMapper;
 import bg.softuni.mobilele.repository.UserRepository;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -13,13 +18,15 @@ public class UserService {
 
     private final UserRepository userRepository;
 
+    private final UserDetailsService userDetailsService;
 
     private final PasswordEncoder passwordEncoder;
 
     private final UserMapper userMapper;
 
-    public UserService(UserRepository userRepository, PasswordEncoder passwordEncoder, UserMapper userMapper) {
+    public UserService(UserRepository userRepository, UserDetailsService userDetailsService, PasswordEncoder passwordEncoder, UserMapper userMapper) {
         this.userRepository = userRepository;
+        this.userDetailsService = userDetailsService;
         this.passwordEncoder = passwordEncoder;
         this.userMapper = userMapper;
     }
@@ -36,7 +43,18 @@ public class UserService {
     }
 
     private void login(UserEntity userEntity) {
-        //todo
+        UserDetails userDetails = userDetailsService.loadUserByUsername(userEntity.getEmail());
+
+        Authentication authentication =
+                new UsernamePasswordAuthenticationToken(
+                        userDetails,
+                        userDetails.getPassword(),
+                        userDetails.getAuthorities()
+                );
+
+        SecurityContextHolder
+                .getContext()
+                .setAuthentication(authentication);
     }
 
 }
