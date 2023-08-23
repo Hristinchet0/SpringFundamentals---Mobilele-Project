@@ -22,3 +22,10 @@ spring:
         init:
             mode: always
 
+mail:
+    host: "localhost"
+    port: 1025
+    username: "mobilele@mobilele.com"
+    password: ""
+
+

@@ -20,13 +20,16 @@ public class UserService {
 
     private final UserDetailsService userDetailsService;
 
+    private final EmailService emailService;
+
     private final PasswordEncoder passwordEncoder;
 
     private final UserMapper userMapper;
 
-    public UserService(UserRepository userRepository, UserDetailsService userDetailsService, PasswordEncoder passwordEncoder, UserMapper userMapper) {
+    public UserService(UserRepository userRepository, UserDetailsService userDetailsService, EmailService emailService, PasswordEncoder passwordEncoder, UserMapper userMapper) {
         this.userRepository = userRepository;
         this.userDetailsService = userDetailsService;
+        this.emailService = emailService;
         this.passwordEncoder = passwordEncoder;
         this.userMapper = userMapper;
     }
@@ -39,6 +42,10 @@ public class UserService {
         userRepository.save(newUser);
 
         login(newUser);
+
+        emailService
+                .sendRegistrationEmail(newUser.getEmail(),
+                        newUser.getFirstName() + " " + newUser.getLastName());
 
     }
 
