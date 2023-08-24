@@ -5,7 +5,7 @@ import bg.softuni.mobilele.model.enums.TransmissionEnum;
 
 import java.math.BigDecimal;
 
-public class CardListingOfferDTO {
+public class OfferDetailDto {
 
     private String imageUrl;
     private Integer year;
@@ -16,7 +16,7 @@ public class CardListingOfferDTO {
     private EngineEnum engine;
     private TransmissionEnum transmission;
 
-    public CardListingOfferDTO() {
+    public OfferDetailDto() {
     }
 
     public String getImageUrl() {
