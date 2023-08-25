@@ -7,6 +7,8 @@ import java.util.Collection;
 
 public class MobileleUserDetails implements UserDetails {
 
+    private final Long id;
+
     private final String password;
 
     private final String username;
@@ -16,7 +18,8 @@ public class MobileleUserDetails implements UserDetails {
     private final String lastName;
     private final Collection<GrantedAuthority> authorities;
 
-    public MobileleUserDetails(String password, String username, String firstName, String lastName, Collection<GrantedAuthority> authorities) {
+    public MobileleUserDetails(Long id, String password, String username, String firstName, String lastName, Collection<GrantedAuthority> authorities) {
+        this.id = id;
         this.password = password;
         this.username = username;
         this.firstName = firstName;
@@ -83,4 +86,6 @@ public class MobileleUserDetails implements UserDetails {
     public boolean isEnabled() {
         return true;
     }
+
+
 }
