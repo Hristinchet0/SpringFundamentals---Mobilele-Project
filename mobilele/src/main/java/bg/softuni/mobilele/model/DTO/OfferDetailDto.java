@@ -4,9 +4,12 @@ import bg.softuni.mobilele.model.enums.EngineEnum;
 import bg.softuni.mobilele.model.enums.TransmissionEnum;
 
 import java.math.BigDecimal;
+import java.util.UUID;
 
 public class OfferDetailDto {
 
+
+    private UUID id;
     private String imageUrl;
     private Integer year;
     private String brand;
@@ -81,6 +84,14 @@ public class OfferDetailDto {
 
     public void setTransmission(TransmissionEnum transmission) {
         this.transmission = transmission;
+    }
+
+    public UUID getId() {
+        return id;
+    }
+
+    public void setId(UUID id) {
+        this.id = id;
     }
 
     public String getOfferHighlight() {
