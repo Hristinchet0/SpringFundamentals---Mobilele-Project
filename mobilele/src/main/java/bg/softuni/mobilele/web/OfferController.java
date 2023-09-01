@@ -21,6 +21,7 @@ import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import javax.validation.Valid;
 import java.util.List;
+import java.util.UUID;
 
 @Controller
 public class OfferController {
@@ -91,8 +92,7 @@ public class OfferController {
                     bindingResult);
             return "redirect:/offers/search";
         }
-        //TODO: Лъчо, моля покажи по-културен вариант от това, тъй като работи, но това изписване меко казано
-        // ми бърка някъде. В data.sql съм добавил оферта, за да се пробва search-a
+
         return String.format("redirect:/offers/search/%s", searchOfferDTO.getQuery());
     }
 
@@ -102,11 +102,14 @@ public class OfferController {
         return "offer-search";
     }
 
-    //TODO: Имаш бонус работещо DTO - CardListingDTO със настроен mapper за offer catalogue
-
     @ModelAttribute(name = "searchOfferModel")
     private SearchOfferDTO initSearchModel() {
         return new SearchOfferDTO();
+    }
+
+    @GetMapping("/offers/{id}/details")
+    public String getOfferDetail(@PathVariable("id") UUID id) {
+        return "details";
     }
 
 }
